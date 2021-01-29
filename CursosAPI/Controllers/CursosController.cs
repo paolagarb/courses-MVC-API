@@ -24,13 +24,13 @@ namespace CursosAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Curso>>> GetCursos()
         {
-            return await _context.Cursos.ToListAsync();
+            return await _context.Cursos.Include("Plataforma").ToListAsync();
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Curso>> GetCurso(long id)
+        public async Task<ActionResult<Curso>> GetCurso(int id)
         {
-            var curso = await _context.Cursos.FindAsync(id);
+            var curso = await _context.Cursos.Include("Plataforma").FirstOrDefaultAsync(c=>c.Id == id);
 
             if (curso == null)
             {
@@ -41,7 +41,7 @@ namespace CursosAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCurso(long id, Curso curso)
+        public async Task<IActionResult> PutCurso(int id, Curso curso)
         {
             if (id != curso.Id)
             {
@@ -83,7 +83,7 @@ namespace CursosAPI.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCurso(long id)
+        public async Task<IActionResult> DeleteCurso(int id)
         {
             var curso = await _context.Cursos.FindAsync(id);
 
@@ -98,7 +98,7 @@ namespace CursosAPI.Controllers
             return NoContent();
         }
 
-        private bool CursoExists(long id) =>
+        private bool CursoExists(int id) =>
              _context.Cursos.Any(e => e.Id == id);
     }
 }
