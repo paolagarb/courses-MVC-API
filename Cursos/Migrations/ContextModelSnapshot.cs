@@ -61,7 +61,6 @@ namespace Cursos.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Plataforma");
                 });
 #pragma warning restore 612, 618
         }
