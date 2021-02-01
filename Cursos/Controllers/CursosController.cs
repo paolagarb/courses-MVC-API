@@ -3,6 +3,7 @@ using Cursos.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -41,6 +42,11 @@ namespace Cursos.Controllers
             }
 
             return View(curso);
+        }
+
+        public Task GetCurso(int v)
+        {
+            throw new NotImplementedException();
         }
 
         // GET: Cursos/Create
