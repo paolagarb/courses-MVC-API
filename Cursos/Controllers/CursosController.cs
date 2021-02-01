@@ -46,7 +46,7 @@ namespace Cursos.Controllers
         // GET: Cursos/Create
         public IActionResult Create()
         {
-            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Id");
+            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Nome");
             return View();
         }
 
@@ -63,7 +63,7 @@ namespace Cursos.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Id", curso.PlataformaId);
+            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Nome", curso.PlataformaId);
             return View(curso);
         }
 
@@ -116,7 +116,7 @@ namespace Cursos.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Id", curso.PlataformaId);
+            ViewData["PlataformaId"] = new SelectList(_context.Plataformas, "Id", "Nome", curso.PlataformaId);
             return View(curso);
         }
 
