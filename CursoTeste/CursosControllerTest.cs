@@ -48,7 +48,7 @@ namespace CursoTeste //Ctrl+R+T - Gerenciador de Testes
 
             await service.PutCurso(1, _curso);
 
-            _mockSet.Verify(m => m.SaveChangesAsync(It.IsAny<CancellationToken>()),
+            _mockContext.Verify(m => m.SaveChangesAsync(It.IsAny<CancellationToken>()),
                 Times.Once());
         }
 
@@ -60,7 +60,7 @@ namespace CursoTeste //Ctrl+R+T - Gerenciador de Testes
             await service.PostCurso(_curso);
 
             _mockSet.Verify(x => x.Add(_curso), Times.Once());
-            _mockSet.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()),
+            _mockContext.Verify(x => x.SaveChangesAsync(It.IsAny<CancellationToken>()),
                 Times.Once());
         }
         [Fact]
@@ -74,7 +74,7 @@ namespace CursoTeste //Ctrl+R+T - Gerenciador de Testes
 
             _mockSet.Verify(x => x.Remove(_curso), Times.Once);
 
-            _mockSet.Verify(m => m.SaveChangesAsync(It.IsAny<CancellationToken>()),
+            _mockContext.Verify(m => m.SaveChangesAsync(It.IsAny<CancellationToken>()),
                 Times.Once());
         }
     }
