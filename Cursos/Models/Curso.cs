@@ -8,6 +8,8 @@
         public int PlataformaId { get; set; }
         public bool TemCertificado { get; set; }
         public bool CertificadoGratuito { get; set; }
+        public byte[] Dados { get; set; }
+        public string ContentType { get; set; }
 
         public Curso()
         {
